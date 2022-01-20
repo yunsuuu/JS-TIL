@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>JS Log</title>
+</head>
+<body>
+    <h2>JS</h2>
+    <div class="hello">
+        <h3>Click me!</h3>
+        1. 타이틀 클릭시 색상 그린으로 <br>
+        2. 한번 더 클릭하면 색상 토마토 & 텍스트 Hello!
+    </div>
+    <h4 id="clock"></h4>
+
+    <!-- dataset -->
+    <!-- 커피 선택 버튼 3개 만든 후 버튼 클릭시 커피 이름&금액 반환 -->
+    <br>
+    <div>
+        <h4>커피를 주문하시오!</h4>
+        <button 
+        type="button" 
+        data-coffee-name="아메리카노" 
+        data-price="4100">아메리카노</button>
+        <button 
+        type="button" 
+        data-coffee-name="카페라떼" 
+        data-price="4300">카페라떼</button>
+        <button 
+        type="button" 
+        data-coffee-name="바닐라라떼" 
+        data-price="4500">바닐라라떼</button>
+    </div>
+    <hr>
+    <div id="result"></div>
+
+    <script src="index.js"></script>
+</body>
+</html>

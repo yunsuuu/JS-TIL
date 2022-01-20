@@ -1,0 +1,17 @@
+body {
+    height: 700px;
+}
+
+h2 {
+    color: green;
+    transition: color .5s ease-in-out;
+}
+
+h3 {
+    /* color: blue; */
+    transition: color .2s ease-in-out;
+}
+
+.clicked {
+    color: tomato;
+}
