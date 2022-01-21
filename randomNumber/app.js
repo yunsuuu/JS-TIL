@@ -15,7 +15,8 @@ function showResult(myNumValue, randNumValue){
     if(myNumValue === randNumValue){
         paintResult.innerText = `You won!`;
     } else if(myNumValue < 0 || myNumValue > maxNumValue){
-        paintChoseNum.innerText = "This is wrong number";
+        alert(`0 ~ ${maxNumValue} 사이의 값을 입력하세요!`)
+        paintChoseNum.innerText = "";
         paintResult.innerText = "";
     } else{
         paintResult.innerText = `You lost!`;
