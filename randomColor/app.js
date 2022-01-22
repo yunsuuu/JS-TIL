@@ -19,21 +19,37 @@ const colors = [
     "#ff3f34"
   ];
   
-  const $body = document.querySelector("body");
-  const $btn = document.querySelector("button");
-  
-  const onClickChangeColor = () => {
-    let randomColorsArray = [];
-    for (let i = 0; i < 2; i++) {
-      const randomColors = colors[Math.floor(Math.random() * colors.length)];
-      if (randomColorsArray.indexOf(randomColors) === -1) {
-        randomColorsArray.push(randomColors);
-      } else {
-        i--;
-      }
+const $body = document.querySelector("body");
+const $btn = document.querySelector("button");
+
+const onClickChangeColor = () => {
+  let randomColorsArray = [];
+  for (let i = 0; i < 2; i++) {
+    const randomColors = colors[Math.floor(Math.random() * colors.length)];
+    if (randomColorsArray.indexOf(randomColors) === -1) {
+      randomColorsArray.push(randomColors);
+    } else {
+      i--;
     }
-    $body.style.backgroundImage = `linear-gradient(0.25turn, ${randomColorsArray})`;
-  };
-  
-  $btn.addEventListener("click", onClickChangeColor);
-  
+  }
+  $body.style.backgroundImage = `linear-gradient(0.25turn, ${randomColorsArray})`;
+};
+
+$btn.addEventListener("click", onClickChangeColor);
+
+// 방법2
+// const $btn = document.querySelector("button");
+
+// const handleClick = () => {
+//   const a = colors[Math.floor(Math.random()*colors.length)];
+//   const b = colors[Math.floor(Math.random()*colors.length)];
+
+//   if(a === b) {
+//       return handleClick(); 
+//       색상이 겹칠 경우 handleClick을 재실행 (함수 내부에 자기 자신을 호출하는 함수를 재귀함수)
+//   };
+
+//   document.body.style.backgroundImage = `linear-gradient(to left, ${a}, ${b})`; 
+// }
+
+// $btn.addEventListener("click", handleClick);
