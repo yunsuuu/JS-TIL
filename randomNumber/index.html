@@ -1,41 +1,67 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>vanilla-JS</title>
-</head>
-<body>
-  <h1>Random Number Game</h1>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>vanilla-JS</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  <div>
-      <h2>
-          Generate a number between 0 and 
-          <span class="maxNum"></span>
-      </h2>
-      <form class="generate-form">
-          <input
-          class="rangeInput"
-          type="range"
-          min="0"
-          max="30" />
+    body {
+      padding: 30px;
+    }
+
+    h1 {
+      padding: 10px;
+    }
+
+    form {
+      margin-left: 10px;
+    }
+
+    .generate-wrap {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 10px;
+    }
+
+    .guess-wrap {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      padding: 10px;
+    }
+    .show-num, 
+    .show-result {
+      padding: 4px 10px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>JS Casino</h1>
+  <div class="generate-wrap">
+    <h2>Generate a number between 0 and</h2>
+    <form class="range-form">
+      <input class="range-input" min="2" type="number" required>
+    </form>
+  </div>
+  <div class="guess-wrap">
+    <h3>Guess the number:</h3>
+    <form class="guess-form">
+      <input class="num-input" type="number" required />
+      <button type="submit" style="width: 50px;">Play</button>
       </form>
   </div>
-  <div>
-      <h3>Guess the number:</h3>
-      <form class="guess-form">
-          <input
-          class="inputNum"
-          type="number"
-          width="50px"
-          required />
-          <button>Play!</button>
-      </form>
-  </div>
-  <div class="paintChoseNum"></div>
-  <h4 class="paintResult"></h4>
-  
+  <div class="show-num"></div>
+  <div class="show-result"></div>
+
   <script src="app.js"></script>
 </body>
 </html>

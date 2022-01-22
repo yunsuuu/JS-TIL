@@ -1,51 +1,48 @@
-const generateForm = document.querySelector(".generate-form");
-const maxNum = document.querySelector(".maxNum");
-const range = document.querySelector(".rangeInput");
-const guessForm = document.querySelector(".guess-form");
-const inputNum = document.querySelector(".inputNum");
-const paintChoseNum = document.querySelector(".paintChoseNum");
-const paintResult = document.querySelector(".paintResult");
+const $rangeForm = document.querySelector(".range-form");
+const $rangeInput = document.querySelector(".range-input");
+const $guessForm = document.querySelector(".guess-form");
+const $numInput = document.querySelector(".num-input");
+const $btn = document.querySelector("button");
+const $showNum = document.querySelector(".show-num");
+const $showResult = document.querySelector(".show-result");
 
-function showResult(myNumValue, randNumValue){
-    inputNum.value = "";
-    const maxNumValue = range.value;
-    paintChoseNum.innerText = `You chose: ${myNumValue}, the machine chose: ${randNumValue}`;
-    myNumValue = parseInt(myNumValue);
-
-    if(myNumValue === randNumValue){
-        paintResult.innerText = `You won!`;
-    } else if(myNumValue < 0 || myNumValue > maxNumValue){
-        alert(`0 ~ ${maxNumValue} 사이의 값을 입력하세요!`)
-        paintChoseNum.innerText = "";
-        paintResult.innerText = "";
-    } else{
-        paintResult.innerText = `You lost!`;
-    }
+const paintResult = (myNumValue, randNumValue) => {
+  myNumValue = parseInt(myNumValue);
+  const maxNumValue = $rangeInput.value;
+  $showNum.innerHTML = `You chose: <strong>${myNumValue}</strong>, the machine chose: <strong>${randNumValue}</strong>`;
+  if(myNumValue === randNumValue) {
+    $showResult.innerHTML = `<strong>You won!</strong>`;
+    $showResult.style.color = "#0000CD";
+  } else if(myNumValue < 0 || myNumValue >= maxNumValue) {
+    alert(`0 이상 ${maxNumValue} 미만의 값을 입력하세요!`);
+    $showNum.innerText = "";
+    $showResult.innerText = "";
+  } else {
+    $showResult.innerHTML = `<strong>You lost!</strong>`;
+    $showResult.style.color = "#DC143C";
+  }
 }
 
-function playGame(e){
-    e.preventDefault();
+const playGame = (e) => {
+  e.preventDefault();
 
-    const myNumValue = inputNum.value;
-    const maxNumValue = range.value;
-    const randNumValue = Math.floor(Math.random()*maxNumValue);
+  const myNumValue = $numInput.value;
+  const maxNumValue = $rangeInput.value;
+  const randNumValue = Math.floor(Math.random()*maxNumValue);
+  
+  $numInput.value = "";
+  $numInput.focus();
 
-    showResult(myNumValue, randNumValue);
+  paintResult(myNumValue, randNumValue);
 }
 
-// range input을 받아 범위 설정
-function handleRange(){
-    const rangeNum = range.value;
-    maxNum.innerText = rangeNum;
-    maxNum.style.color = "#800000";
+const makeMaxNum = (e) => {
+  e.preventDefault();
+  
+  $showNum.innerText = "";
+  $showResult.innerText = "";
 
-    guessForm.addEventListener("submit", playGame);
+  $guessForm.addEventListener("submit", playGame);
 }
 
-// 앱 실행시 가장 처음 동작하는 함수
-function init(){
-    range.oninput = handleRange;
-    // range input이 동작하면 handleRange 함수 실행
-}
-
-init();
+$rangeForm.addEventListener("submit", makeMaxNum);
